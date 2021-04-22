@@ -1,0 +1,15 @@
+本题要求实现一个函数，在递增的整数序列链表（带头结点）中插入一个新整数，并保持该序列的有序性。
+
+```
+List Insert(List L, ElementType X)
+{
+    PtrToNode p = L;
+    //这里的&&一定要先判断next,因为Next若为NULL无法判断后者,前者为false则不判断后者.
+    for (; (p->Next != NULL) && (p->Next->Data < X); p = p->Next);
+    PtrToNode t = (PtrToNode)malloc(sizeof(struct Node));
+    t->Data = X;
+    t->Next = p->Next;
+    p->Next = t;
+    return L;
+}
+```
